@@ -1,0 +1,1310 @@
+
+:root{font-family:Arial,Helvetica,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+html{min-height:100%}
+
+body{
+--bg:#080b18;
+--panel:#11182d;
+--button:#1b2540;
+--primary:#ff69b4;
+--secondary:#48c7ff;
+--text:#fff;
+--muted:#aab9d4;
+--border:#ff69b455;
+--shell-top:#f8b9df;
+--shell-middle:#df79bc;
+--shell-bottom:#984d9d;
+--shell-edge:#ffe0f3;
+--shell-shadow:#ff69b466;
+margin:0;
+min-height:100vh;
+min-height:100dvh;
+color:var(--text);
+background:radial-gradient(ellipse at 50% 20%,#312250 0%,transparent 55%),radial-gradient(ellipse at 85% 85%,#102b50 0%,transparent 45%),var(--bg);
+overflow-x:hidden;
+}
+
+/* ==========================================
+   TEMAS ANTERIORES
+========================================== */
+
+body[data-theme="azul"]{
+--bg:#050d1d;
+--panel:#0b1c36;
+--button:#142b4d;
+--primary:#38bdf8;
+--secondary:#a3a8ff;
+--border:#38bdf855;
+--shell-top:#82d8ff;
+--shell-middle:#287fc7;
+--shell-bottom:#173c85;
+--shell-edge:#b7edff;
+--shell-shadow:#38bdf866;
+}
+
+body[data-theme="dorado"]{
+--bg:#100d09;
+--panel:#241b11;
+--button:#35291b;
+--primary:#f8be55;
+--secondary:#ffe4a3;
+--border:#f8be5555;
+--shell-top:#f5d18b;
+--shell-middle:#b88735;
+--shell-bottom:#67451b;
+--shell-edge:#fff0c4;
+--shell-shadow:#f8be5566;
+}
+
+/* ==========================================
+   ELEMENTOS GENERALES
+========================================== */
+
+button,input,select{font:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible{
+outline:2px solid var(--secondary);
+outline-offset:3px;
+}
+
+button:active{transform:scale(.97)}
+[hidden]{display:none!important}
+
+h1,h2,h3,p{overflow-wrap:break-word}
+h2{font-size:clamp(23px,5vw,30px);margin:0 0 12px}
+h3{color:var(--primary)}
+
+/* ==========================================
+   ENCABEZADO
+========================================== */
+
+.header{
+height:78px;
+padding:0 24px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:#080d1ce8;
+border-bottom:1px solid var(--border);
+backdrop-filter:blur(15px);
+position:sticky;
+top:0;
+z-index:10;
+}
+
+.brand{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.brand strong{
+color:var(--primary);
+font-size:34px;
+font-weight:900;
+letter-spacing:2px;
+text-shadow:0 0 15px var(--primary);
+}
+
+.brand span{
+color:var(--text);
+font-size:10px;
+font-weight:bold;
+letter-spacing:3px;
+}
+
+.icon-button{
+width:46px;
+height:46px;
+background:transparent;
+border:none;
+border-radius:12px;
+color:var(--secondary);
+font-size:28px;
+}
+
+/* ==========================================
+   CONTENIDO PRINCIPAL
+========================================== */
+
+.main{
+width:min(100%,750px);
+margin:0 auto;
+padding:30px 18px 70px;
+}
+
+.page{
+display:none;
+animation:appear .2s ease;
+}
+
+.page.active{display:block}
+
+@keyframes appear{
+from{opacity:0;transform:translateY(7px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+.section-description{
+color:var(--muted);
+margin-bottom:25px;
+line-height:1.6;
+}
+
+/* ==========================================
+   CALCULADORA NORMAL
+========================================== */
+
+#calculadora{
+max-width:590px;
+margin:0 auto;
+}
+
+.hero{
+position:relative;
+z-index:1;
+max-width:510px;
+margin:0 auto -12px;
+padding:26px 22px 29px;
+text-align:center;
+background:linear-gradient(145deg,var(--shell-top),var(--shell-middle) 65%,var(--shell-bottom));
+border:4px solid var(--shell-edge);
+border-bottom:0;
+border-radius:42px 42px 0 0;
+box-shadow:0 -8px 28px var(--shell-shadow),inset 0 6px 12px #ffffff55;
+}
+
+.mascot{
+font-size:46px;
+margin-bottom:8px;
+filter:drop-shadow(0 3px 8px #00000055);
+}
+
+.hero h1{
+color:#fff;
+font-size:clamp(18px,4vw,23px);
+font-weight:900;
+letter-spacing:2px;
+margin:0;
+text-shadow:0 2px 5px #00000066,0 0 12px #ffffff88;
+}
+
+.hero p{
+color:#fff;
+font-size:12px;
+font-weight:bold;
+margin-bottom:0;
+text-shadow:0 2px 5px #00000088;
+}
+
+/* ==========================================
+   CARCASA DE LA CALCULADORA
+========================================== */
+
+.calculator{
+position:relative;
+z-index:2;
+max-width:510px;
+margin:0 auto;
+padding:26px 23px 30px;
+background:linear-gradient(145deg,var(--shell-top) 0%,var(--shell-middle) 45%,var(--shell-bottom) 100%);
+border:4px solid var(--shell-edge);
+border-top:0;
+border-radius:24px 24px 43px 43px;
+box-shadow:0 20px 45px #00000088,0 0 35px var(--shell-shadow),inset 6px 0 13px #ffffff44,inset -8px -8px 18px #00000035;
+}
+
+.calculator::before{
+content:"";
+display:block;
+height:4px;
+margin:0 4px 19px;
+border-radius:20px;
+background:#ffffff99;
+box-shadow:0 0 10px #ffffff99;
+}
+
+/* ==========================================
+   PANTALLA
+========================================== */
+
+.display{
+min-height:148px;
+padding:20px;
+margin-bottom:24px;
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+text-align:right;
+background:linear-gradient(150deg,#10182d,#050915);
+border:5px solid #333b57;
+border-radius:24px;
+box-shadow:inset 0 5px 15px #000000aa,0 4px 8px #00000055,0 0 15px var(--shell-shadow);
+}
+
+.expression{
+min-height:45px;
+color:#b7c6e3;
+font-size:clamp(28px,7vw,38px);
+font-weight:600;
+overflow-wrap:anywhere;
+}
+
+.result{
+color:var(--secondary);
+font-size:clamp(22px,5vw,28px);
+font-weight:700;
+margin-top:10px;
+overflow-wrap:anywhere;
+text-shadow:0 0 14px var(--secondary);
+}
+
+/* ==========================================
+   TECLADO NORMAL
+========================================== */
+
+.keypad{
+display:grid;
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:12px;
+}
+
+.key{
+min-width:0;
+aspect-ratio:1.13;
+background:linear-gradient(155deg,#2a3558,#121a30);
+color:#fff;
+border:2px solid #77d7ff;
+border-radius:21px;
+font-size:clamp(21px,5vw,29px);
+font-weight:800;
+box-shadow:0 5px 0 #10182b,0 8px 12px #00000055,inset 0 2px 5px #ffffff20;
+transition:transform .1s,box-shadow .1s;
+}
+
+.key:hover{filter:brightness(1.12)}
+
+.key:active{
+transform:translateY(4px);
+box-shadow:0 1px 0 #10182b,inset 0 3px 8px #00000077;
+}
+
+.key.operator{
+color:var(--primary);
+border-color:var(--primary);
+}
+
+.key.function{color:var(--secondary)}
+
+.key.clear{
+color:#fff;
+background:linear-gradient(145deg,#ff9fd4,#e957a4);
+border-color:#ffe1f1;
+}
+
+body[data-theme="azul"] .key.clear{
+background:linear-gradient(145deg,#7ddfff,#278ad3);
+border-color:#d1f4ff;
+}
+
+body[data-theme="dorado"] .key.clear{
+background:linear-gradient(145deg,#f9d990,#b8842e);
+border-color:#fff0c4;
+}
+
+.key.equals{
+grid-column:1/-1;
+aspect-ratio:auto;
+height:66px;
+margin-top:5px;
+color:#101323;
+font-size:33px;
+background:linear-gradient(145deg,var(--shell-edge),var(--primary));
+border:2px solid #ffffffaa;
+border-radius:20px;
+box-shadow:0 5px 0 #3b2847,0 0 17px var(--shell-shadow);
+}
+
+/* ==========================================
+   ACCESOS DIRECTOS
+========================================== */
+
+.quick-actions{
+display:flex;
+gap:12px;
+margin-top:25px;
+}
+
+.quick-actions button{
+flex:1;
+min-width:0;
+padding:15px 8px;
+background:#121a30;
+color:#fff;
+border:2px solid var(--secondary);
+border-radius:15px;
+font-size:14px;
+font-weight:bold;
+}
+
+.footer-note{
+text-align:center;
+color:var(--muted);
+font-size:12px;
+margin-top:30px;
+}
+
+/* ==========================================
+   TARJETAS
+========================================== */
+
+.card{
+background:var(--panel);
+border:1px solid var(--border);
+border-radius:22px;
+padding:21px;
+margin-bottom:17px;
+box-shadow:0 8px 25px #00000030;
+}
+
+.card p{
+color:var(--muted);
+line-height:1.7;
+}
+
+.card label{
+display:block;
+color:var(--text);
+font-weight:600;
+margin-bottom:9px;
+}
+
+.card input:not([type="file"]),
+.card select{
+display:block;
+width:100%;
+padding:14px;
+margin-bottom:22px;
+background:var(--button);
+color:var(--text);
+border:1px solid var(--border);
+border-radius:13px;
+font-size:17px;
+}
+
+.card select option{background:var(--panel)}
+
+.result-card span{
+display:block;
+color:var(--muted);
+}
+
+.result-card strong{
+display:block;
+color:var(--secondary);
+font-size:clamp(25px,7vw,38px);
+margin:15px 0;
+overflow-wrap:anywhere;
+}
+
+.result-card small{color:var(--muted)}
+
+/* ==========================================
+   HISTORIAL Y FAVORITOS
+========================================== */
+
+.section-heading{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.section-heading p{
+color:var(--muted);
+font-size:14px;
+}
+
+.small-button{
+padding:12px;
+background:var(--button);
+color:var(--text);
+border:1px solid var(--border);
+border-radius:12px;
+}
+
+.danger{color:#ff929e!important}
+
+.record{
+background:var(--panel);
+border:1px solid var(--border);
+border-radius:20px;
+padding:20px;
+margin-bottom:15px;
+}
+
+.record-date{
+color:var(--muted);
+font-size:12px;
+}
+
+.record-expression{
+font-size:20px;
+margin:13px 0;
+overflow-wrap:anywhere;
+}
+
+.record-result{
+color:var(--secondary);
+font-size:29px;
+font-weight:bold;
+overflow-wrap:anywhere;
+}
+
+.record-actions{
+display:flex;
+flex-wrap:wrap;
+gap:9px;
+margin-top:15px;
+}
+
+.record-actions button{
+flex:1;
+min-width:110px;
+padding:12px 8px;
+background:var(--button);
+color:var(--text);
+border:1px solid var(--border);
+border-radius:12px;
+}
+
+.empty{
+text-align:center;
+color:var(--muted);
+padding:45px 20px;
+background:var(--panel);
+border-radius:20px;
+}
+
+/* ==========================================
+   PERSONALIZACIÓN
+========================================== */
+
+.theme-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+gap:14px;
+}
+
+.theme-card{
+min-height:180px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:12px;
+border-radius:22px;
+border:2px solid transparent;
+color:#fff;
+cursor:pointer;
+overflow:hidden;
+position:relative;
+box-shadow:0 8px 20px #0005;
+transition:transform .2s,filter .2s;
+}
+
+.theme-card:hover{
+transform:translateY(-3px);
+filter:brightness(1.12);
+}
+
+.theme-card span{font-size:43px}
+.theme-card strong{font-size:22px}
+.theme-card small{opacity:.9;color:#fff}
+
+.theme-card.selected{
+outline:3px solid var(--secondary);
+outline-offset:3px;
+}
+
+/* ==========================================
+   BOTONES SECUNDARIOS
+========================================== */
+
+.secondary-button{
+display:block;
+width:100%;
+padding:15px;
+margin:12px 0;
+background:var(--button);
+color:var(--text);
+border:1px solid var(--border);
+border-radius:14px;
+text-align:center;
+text-decoration:none;
+}
+
+.import-label{cursor:pointer}
+
+/* ==========================================
+   MENÚ LATERAL
+========================================== */
+
+.overlay{
+position:fixed;
+inset:0;
+background:#000000b8;
+z-index:30;
+}
+
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+bottom:0;
+width:min(340px,88vw);
+padding:22px;
+background:var(--panel);
+z-index:31;
+transform:translateX(-105%);
+transition:transform .25s ease;
+display:flex;
+flex-direction:column;
+overflow-y:auto;
+overscroll-behavior:contain;
+box-shadow:10px 0 40px #00000070;
+}
+
+.sidebar.open{transform:translateX(0)}
+
+.sidebar-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:24px;
+}
+
+.navigation{
+display:flex;
+flex-direction:column;
+gap:7px;
+}
+
+.navigation button{
+background:transparent;
+color:var(--text);
+border:0;
+border-radius:13px;
+padding:15px;
+text-align:left;
+font-size:15px;
+}
+
+.navigation button:hover,
+.navigation button.active{
+background:var(--button);
+color:var(--primary);
+}
+
+.sidebar-footer{margin-top:25px}
+.sidebar-footer p{color:var(--muted)}
+
+.theme-row{
+display:flex;
+gap:10px;
+margin:14px 0 30px;
+}
+
+.theme-dot{
+flex:1;
+border-radius:12px;
+padding:13px 5px;
+font-size:24px;
+min-height:42px;
+border:1px solid var(--border);
+cursor:pointer;
+}
+
+.sidebar-footer small{color:var(--muted)}
+
+/* ==========================================
+   NOTIFICACIONES
+========================================== */
+
+.toast{
+position:fixed;
+bottom:25px;
+left:50%;
+transform:translateX(-50%) translateY(100px);
+background:var(--primary);
+color:#08101d;
+padding:13px 22px;
+border-radius:15px;
+font-weight:bold;
+text-align:center;
+max-width:90%;
+z-index:50;
+opacity:0;
+pointer-events:none;
+transition:.25s;
+}
+
+.toast.show{
+opacity:1;
+transform:translateX(-50%) translateY(0);
+}
+
+/* ==========================================
+   NAVEGACIÓN VERTICAL
+========================================== */
+
+.header{
+position:fixed;
+top:12px;
+left:8px;
+bottom:12px;
+width:52px;
+height:auto;
+padding:8px 3px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-start;
+background:#080d1ce8;
+border:1px solid var(--border);
+border-radius:18px;
+backdrop-filter:blur(15px);
+z-index:10;
+}
+
+.header .icon-button{
+width:44px;
+height:44px;
+flex-shrink:0;
+}
+
+.main{padding-top:40px}
+
+/* ==========================================
+   RESULTADO DESTACADO
+========================================== */
+
+body.calculo-terminado .expression{
+font-size:20px;
+font-weight:400;
+opacity:.8;
+}
+
+body.calculo-terminado .result{
+font-size:clamp(38px,10vw,52px);
+font-weight:900;
+color:var(--secondary);
+text-shadow:0 0 18px var(--secondary);
+}
+
+/* ==========================================
+   CABECERA DE CALCULADORA
+========================================== */
+
+.titulo-calculadora{
+width:100%;
+max-width:510px;
+margin:0 auto 12px;
+padding:18px 12px;
+background:linear-gradient(145deg,var(--shell-top) 0%,var(--shell-middle) 45%,var(--shell-bottom) 100%);
+border:2px solid var(--shell-edge);
+border-radius:22px;
+box-shadow:0 6px 0 #7e427f,0 10px 22px #ff69b440;
+text-align:center;
+font-size:22px;
+font-weight:900;
+color:#fff;
+text-shadow:0 2px 4px #46144680;
+}
+
+/* ==========================================
+   CALCULADORA CIENTÍFICA
+========================================== */
+
+#cientifica{
+max-width:590px;
+margin:0 auto;
+}
+
+.mode-switch{
+margin:20px 0 0;
+padding:14px 10px;
+font-size:14px;
+font-weight:800;
+border:2px solid var(--shell-edge);
+background:linear-gradient(135deg,var(--panel),var(--button));
+color:var(--text);
+box-shadow:0 4px 12px #00000030;
+}
+
+.scientific-calculator{padding:18px 15px 24px}
+
+.scientific-display{
+min-height:132px;
+margin-bottom:13px;
+padding:12px 14px;
+}
+
+.scientific-status{
+display:flex;
+justify-content:space-between;
+gap:8px;
+color:var(--muted);
+font-size:10px;
+font-weight:800;
+letter-spacing:1px;
+margin-bottom:12px;
+}
+
+#cientifica .expression{
+font-size:clamp(19px,5vw,28px);
+min-height:34px;
+overflow-wrap:anywhere;
+}
+
+#cientifica .result{
+font-size:clamp(23px,6vw,34px);
+overflow-wrap:anywhere;
+}
+
+.scientific-toolbar,
+.scientific-keypad{
+display:grid;
+grid-template-columns:repeat(5,minmax(0,1fr));
+gap:7px;
+}
+
+.scientific-toolbar{margin-bottom:12px}
+
+.scientific-control,
+.sci-key{
+min-width:0;
+min-height:45px;
+padding:6px 2px;
+border-radius:11px;
+border:1.5px solid #77d7ff;
+background:linear-gradient(155deg,#2a3558,#121a30);
+color:#fff;
+font-size:clamp(11px,2.7vw,17px);
+font-weight:800;
+box-shadow:0 3px 0 #10182b,inset 0 2px 5px #ffffff20;
+touch-action:manipulation;
+}
+
+.scientific-control{
+color:var(--secondary);
+background:var(--panel);
+border-color:var(--border);
+font-size:12px;
+}
+
+.sci-key.function{color:var(--secondary)}
+
+.sci-key.operator{
+color:var(--primary);
+border-color:var(--primary);
+}
+
+.sci-key.clear,
+.sci-key.equals{
+color:#101323;
+background:linear-gradient(145deg,var(--shell-edge),var(--primary));
+border-color:#ffffffaa;
+}
+
+.sci-key.equals{font-size:25px}
+
+.sci-key:active,
+.scientific-control:active{
+transform:translateY(2px);
+box-shadow:0 1px 0 #10182b;
+}
+
+/* ==========================================
+   JR² CALCULADORA 3.0 - TEMAS
+========================================== */
+
+/* POKÉMON INSPIRADO */
+
+body[data-theme="pokemon"]{
+--bg:#090d20;
+--panel:#151d38;
+--button:#202e50;
+--primary:#ffca42;
+--secondary:#55d9ff;
+--text:#fff;
+--muted:#c0cbe0;
+--border:#ffca4266;
+--shell-top:#ffd85a;
+--shell-middle:#e45b45;
+--shell-bottom:#344d9b;
+--shell-edge:#fff0b0;
+--shell-shadow:#55d9ff66;
+background:linear-gradient(135deg,#090d20e8,#15254de8),url("assets/themes/pokemon/fondo.png") center/cover fixed;
+}
+
+/* ESPACIO Y GALAXIAS */
+
+body[data-theme="galaxias"]{
+--bg:#08051a;
+--panel:#17102f;
+--button:#281b4c;
+--primary:#bd83ff;
+--secondary:#62d8ff;
+--text:#fff;
+--muted:#c9bde5;
+--border:#bd83ff66;
+--shell-top:#a98bff;
+--shell-middle:#623eaa;
+--shell-bottom:#24194f;
+--shell-edge:#e4d7ff;
+--shell-shadow:#a879ff77;
+background:linear-gradient(135deg,#08051ae8,#21134be8),url("assets/themes/galaxias/fondo.webp") center/cover fixed;
+}
+
+/* KAWAII MORADO */
+
+body[data-theme="kawaii"]{
+--bg:#130b20;
+--panel:#241431;
+--button:#38204b;
+--primary:#e7a1ff;
+--secondary:#ffb6df;
+--text:#fff;
+--muted:#ddc5e8;
+--border:#e7a1ff66;
+--shell-top:#edc0ff;
+--shell-middle:#ad70d0;
+--shell-bottom:#603b83;
+--shell-edge:#ffe5ff;
+--shell-shadow:#df9bff77;
+background:linear-gradient(135deg,#130b20e8,#321b45e8),url("assets/themes/kawaii/fondo.webp") center/cover fixed;
+}
+
+/* BOTONES DE LOS TEMAS */
+
+.theme-card.pokemon,
+.theme-dot.pokemon{
+background:linear-gradient(145deg,#ffd85a,#344d9b);
+border-color:#ffca42;
+color:#fff;
+}
+
+.theme-card.galaxias,
+.theme-dot.galaxias{
+background:linear-gradient(145deg,#a98bff,#24194f);
+border-color:#bd83ff;
+color:#fff;
+}
+
+.theme-card.kawaii,
+.theme-dot.kawaii{
+background:linear-gradient(145deg,#edc0ff,#603b83);
+border-color:#e7a1ff;
+color:#fff;
+}
+
+/* ESTADO DEL TEMA ACTIVO */
+
+.theme-card.selected{
+outline:3px solid var(--secondary);
+outline-offset:3px;
+}
+
+body[data-theme="pokemon"] .key.clear,
+body[data-theme="galaxias"] .key.clear,
+body[data-theme="kawaii"] .key.clear{
+background:linear-gradient(145deg,var(--shell-edge),var(--primary));
+border-color:var(--shell-edge);
+}
+
+body[data-theme="pokemon"] .sci-key.clear,
+body[data-theme="galaxias"] .sci-key.clear,
+body[data-theme="kawaii"] .sci-key.clear{
+background:linear-gradient(145deg,var(--shell-edge),var(--primary));
+border-color:var(--shell-edge);
+}
+
+/* ==========================================
+   CONVERSOR DE MONEDAS
+========================================== */
+
+#monedas{
+max-width:590px;
+margin:0 auto;
+}
+
+#monedas .card{backdrop-filter:blur(12px)}
+
+#monedas input,
+#monedas select{
+width:100%;
+min-height:48px;
+padding:13px;
+margin:8px 0 20px;
+background:var(--button);
+color:var(--text);
+border:1px solid var(--border);
+border-radius:13px;
+font-size:16px;
+}
+
+#monedas .result-card strong{overflow-wrap:anywhere}
+
+#currencyRate,
+#currencyUpdated{
+display:block;
+margin-top:8px;
+line-height:1.5;
+}
+
+#monedas button:disabled{
+opacity:.6;
+cursor:wait;
+}
+
+/* ==========================================
+   ADAPTACIÓN PARA CELULARES
+========================================== */
+
+@media(max-width:480px){
+
+.header{
+height:70px;
+padding:0 13px;
+}
+
+.main{
+padding:20px 10px 45px;
+}
+
+.hero{
+padding:19px 12px 25px;
+border-radius:32px 32px 0 0;
+}
+
+.mascot{font-size:39px}
+.hero h1{font-size:18px}
+
+.calculator{
+padding:19px 12px 25px;
+border-radius:18px 18px 32px 32px;
+}
+
+.display{
+min-height:125px;
+padding:14px;
+margin-bottom:19px;
+}
+
+.keypad{gap:8px}
+
+.key{
+border-radius:15px;
+border-width:1.5px;
+font-size:clamp(20px,6vw,26px);
+}
+
+.key.equals{height:60px}
+
+.quick-actions{gap:8px}
+
+.quick-actions button{
+font-size:12px;
+padding:13px 5px;
+}
+
+.card{padding:17px}
+
+.sidebar{width:min(320px,88vw)}
+
+.header{
+top:55px;
+left:4px;
+bottom:auto;
+width:42px;
+height:78dvh;
+max-height:none;
+padding:6px 1px;
+border-radius:14px;
+}
+
+.header .icon-button{
+width:38px;
+height:42px;
+font-size:25px;
+}
+
+.main{
+padding-top:55px;
+padding-left:48px;
+padding-right:6px;
+}
+
+.scientific-calculator{
+padding:12px 8px 19px;
+border-width:3px;
+}
+
+.scientific-calculator::before{margin-bottom:12px}
+
+.scientific-display{
+min-height:110px;
+padding:10px;
+}
+
+.scientific-toolbar,
+.scientific-keypad{gap:4px}
+
+.scientific-control,
+.sci-key{
+min-height:39px;
+padding:5px 1px;
+border-radius:8px;
+border-width:1px;
+font-size:clamp(10px,2.6vw,14px);
+}
+
+.scientific-control{
+font-size:clamp(10px,2.4vw,12px);
+}
+
+.mode-switch{
+font-size:12px;
+padding:12px 5px;
+}
+
+body[data-theme="pokemon"],
+body[data-theme="galaxias"],
+body[data-theme="kawaii"]{
+background-attachment:scroll;
+}
+
+#monedas .card{padding:15px}
+
+}
+
+@media(max-width:350px){
+
+.main{
+padding-left:46px;
+padding-right:4px;
+}
+
+.calculator{padding-inline:9px}
+.keypad{gap:5px}
+.key{border-radius:12px;font-size:21px}
+
+.scientific-calculator{padding-inline:5px}
+
+.scientific-toolbar,
+.scientific-keypad{gap:3px}
+
+.sci-key,
+.scientific-control{
+font-size:10px;
+min-height:37px;
+}
+
+}
+
+/* ==========================================
+   JR² 3.0 - INTEGRACIÓN DEL TEMA POKÉMON
+========================================== */
+
+body[data-theme="pokemon"] {
+    background: #090d20;
+}
+
+/* Imagen integrada en la parte superior */
+body[data-theme="pokemon"] .hero {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(9, 13, 32, 0.25),
+            rgba(52, 77, 155, 0.35)
+        ),
+        url("assets/themes/pokemon/fondo.png") center 35% / cover;
+
+    border-color: #fff0b0;
+}
+
+/* Imagen integrada en la carcasa */
+body[data-theme="pokemon"] .calculator {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(9, 13, 32, 0.35),
+            rgba(228, 91, 69, 0.30)
+        ),
+        url("assets/themes/pokemon/fondo.png") center 65% / cover;
+
+    border-color: #fff0b0;
+}
+
+/* Teclas con transparencia ligera */
+body[data-theme="pokemon"] .key {
+    background: linear-gradient(
+        145deg,
+        rgba(42, 53, 88, 0.94),
+        rgba(18, 26, 48, 0.94)
+    );
+}
+
+/* Pantalla legible */
+body[data-theme="pokemon"] .display {
+    background: #10182df2;
+}
+
+/* ==========================================
+   TEMA ESPACIO Y GALAXIAS
+========================================== */
+
+body[data-theme="galaxias"] .hero {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8, 5, 26, 0.25),
+            rgba(36, 25, 79, 0.30)
+        ),
+        url("assets/themes/galaxias/fondo.png") center / cover;
+
+    border-color: #e4d7ff;
+}
+
+body[data-theme="galaxias"] .calculator {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8, 5, 26, 0.25),
+            rgba(36, 25, 79, 0.25)
+        ),
+        url("assets/themes/galaxias/fondo.png") center / 100% 100%;
+
+    border-color: #e4d7ff;
+}
+
+body[data-theme="galaxias"] .display {
+    background: #100b25f2;
+}
+
+body[data-theme="galaxias"] .key {
+    background: linear-gradient(
+        145deg,
+        rgba(55, 37, 100, 0.94),
+        rgba(22, 15, 48, 0.94)
+    );
+}
+
+
+/* ==========================================
+   TEMA KAWAII MORADO
+========================================== */
+
+body[data-theme="kawaii"] .hero {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(45, 20, 65, 0.20),
+            rgba(120, 65, 155, 0.30)
+        ),
+        url("assets/themes/kawaii/fondo.png") center / cover;
+
+    border-color: #ffe5ff;
+}
+
+body[data-theme="kawaii"] .calculator {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(45, 20, 65, 0.25),
+            rgba(96, 59, 131, 0.25)
+        ),
+        url("assets/themes/kawaii/fondo.png") center / 100% 100%;
+
+    border-color: #ffe5ff;
+}
+
+body[data-theme="kawaii"] .display {
+    background: #21132df2;
+}
+
+body[data-theme="kawaii"] .key {
+    background: linear-gradient(
+        145deg,
+        rgba(91, 55, 120, 0.94),
+        rgba(43, 27, 62, 0.94)
+    );
+}
+/* ==========================================
+   JR² 3.0 - CORRECCIÓN FINAL DE FONDOS
+========================================== */
+
+body[data-theme="pokemon"] .calculator {
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(9, 13, 32, 0.20),
+            rgba(52, 77, 155, 0.25)
+        ),
+        url("assets/themes/pokemon/fondo.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body[data-theme="galaxias"] .calculator {
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(8, 5, 26, 0.18),
+            rgba(36, 25, 79, 0.22)
+        ),
+        url("assets/themes/galaxias/fondo.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body[data-theme="kawaii"] .calculator {
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(45, 20, 65, 0.18),
+            rgba(96, 59, 131, 0.22)
+        ),
+        url("assets/themes/kawaii/fondo.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Ajustes de área segura para iPhone y dispositivos con bordes redondeados */
+html {
+  min-height: 100%;
+  min-height: 100dvh;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  overscroll-behavior-y: contain;
+}
+.header {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.main {
+  padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+}
+button, input, select {
+  touch-action: manipulation;
+}

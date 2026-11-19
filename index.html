@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <meta name="theme-color" content="#080b18">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="JR² Calculadora">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <meta name="description"
+        content="JR² Calculadora 3.0: calculadora normal, científica y conversor de monedas.">
+
+  <title>JR² Calculadora 3.0</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="pwa-register.js" defer></script>
+</head>
+
+<body data-theme="pokemon">
+
+  <!-- ENCABEZADO Y MENÚ VERTICAL -->
+  <header class="header">
+    <button class="icon-button"
+            id="openMenu"
+            aria-label="Abrir menú">☰</button>
+  </header>
+
+  <!-- FONDO DEL MENÚ -->
+  <div id="overlay" class="overlay" hidden></div>
+
+  <!-- MENÚ LATERAL -->
+  <aside id="sidebar" class="sidebar"
+         aria-label="Menú de navegación">
+
+    <div class="sidebar-header">
+      <div class="brand">
+        <strong>JR²</strong>
+        <span>CALCULADORA 3.0</span>
+      </div>
+
+      <button id="closeMenu"
+              class="icon-button"
+              aria-label="Cerrar menú">✕</button>
+    </div>
+
+    <nav class="navigation">
+
+      <button data-page="calculadora" class="active">
+        🧮 Calculadora normal
+      </button>
+
+      <button data-page="cientifica">
+        🔬 Calculadora científica
+      </button>
+
+      <button data-page="historial">
+        🕒 Historial
+      </button>
+
+      <button data-page="favoritos">
+        ⭐ Favoritos
+      </button>
+
+      <button data-page="conversor">
+        📏 Conversor de unidades
+      </button>
+
+      <button data-page="monedas">
+        💱 Conversor de monedas
+      </button>
+
+      <button data-page="porcentajes">
+        📊 Calculadora de porcentajes
+      </button>
+
+      <button data-page="temas">
+        🎨 Temas personalizados
+      </button>
+
+      <button data-page="ajustes">
+        ⚙️ Ajustes
+      </button>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      <p>Selecciona tu tema</p>
+
+      <div class="theme-row">
+
+        <button class="theme-dot pokemon"
+                data-theme-select="pokemon"
+                aria-label="Tema Pokémon">⚡</button>
+
+        <button class="theme-dot galaxias"
+                data-theme-select="galaxias"
+                aria-label="Tema Espacio y galaxias">🌌</button>
+
+        <button class="theme-dot kawaii"
+                data-theme-select="kawaii"
+                aria-label="Tema Kawaii morado">💜</button>
+
+      </div>
+
+      <small>JR² Calculadora · Versión 3.0</small>
+    </div>
+
+  </aside>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main">
+
+    <!-- =====================================
+         CALCULADORA NORMAL
+    ====================================== -->
+
+    <section id="calculadora" class="page active">
+
+      <div class="titulo-calculadora">
+        JR² Calculadora 3.0
+      </div>
+
+      <div class="calculator">
+
+        <div class="display">
+          <div id="expression" class="expression">0</div>
+
+          <div id="result"
+               class="result"
+               aria-live="polite">0</div>
+        </div>
+
+        <div class="keypad">
+
+          <button class="key clear" data-key="C">C</button>
+          <button class="key function" data-key="()">()</button>
+          <button class="key function" data-key="%">%</button>
+          <button class="key operator" data-key="÷">÷</button>
+
+          <button class="key" data-key="7">7</button>
+          <button class="key" data-key="8">8</button>
+          <button class="key" data-key="9">9</button>
+          <button class="key operator" data-key="×">×</button>
+
+          <button class="key" data-key="4">4</button>
+          <button class="key" data-key="5">5</button>
+          <button class="key" data-key="6">6</button>
+          <button class="key operator" data-key="−">−</button>
+
+          <button class="key" data-key="1">1</button>
+          <button class="key" data-key="2">2</button>
+          <button class="key" data-key="3">3</button>
+          <button class="key operator" data-key="+">+</button>
+
+          <button class="key function" data-key="±">±</button>
+          <button class="key" data-key="0">0</button>
+          <button class="key" data-key=".">.</button>
+          <button class="key function" data-key="⌫">⌫</button>
+
+          <button class="key equals" data-key="=">=</button>
+
+        </div>
+
+        <button class="secondary-button mode-switch"
+                data-page="cientifica">
+          🔬 Cambiar a calculadora científica
+        </button>
+
+      </div>
+
+      <p class="footer-note">
+        JR² Calculadora 3.0 · Tu herramienta de cada día
+      </p>
+
+    </section>
+
+    <!-- =====================================
+         CALCULADORA CIENTÍFICA
+    ====================================== -->
+
+    <section id="cientifica" class="page">
+
+      <div class="titulo-calculadora">
+        🔬 JR² Científica
+      </div>
+
+      <div class="calculator scientific-calculator">
+
+        <div class="display scientific-display">
+
+          <div class="scientific-status">
+            <span id="angleModeLabel">DEG</span>
+            <span>JR² SCIENTIFIC</span>
+          </div>
+
+          <div id="scientificExpression"
+               class="expression">0</div>
+
+          <div id="scientificResult"
+               class="result"
+               aria-live="polite">0</div>
+
+        </div>
+
+        <!-- CONFIGURACIÓN -->
+        <div class="scientific-toolbar">
+
+          <button id="angleModeButton"
+                  class="scientific-control">DEG</button>
+
+          <button class="scientific-control" data-sci="MC">MC</button>
+          <button class="scientific-control" data-sci="MR">MR</button>
+          <button class="scientific-control" data-sci="M+">M+</button>
+          <button class="scientific-control" data-sci="M−">M−</button>
+
+        </div>
+
+        <!-- TECLADO CIENTÍFICO -->
+        <div class="scientific-keypad">
+
+          <button class="sci-key function" data-sci="sin">sin</button>
+          <button class="sci-key function" data-sci="cos">cos</button>
+          <button class="sci-key function" data-sci="tan">tan</button>
+          <button class="sci-key function" data-sci="π">π</button>
+          <button class="sci-key function" data-sci="e">e</button>
+
+          <button class="sci-key function" data-sci="asin">sin⁻¹</button>
+          <button class="sci-key function" data-sci="acos">cos⁻¹</button>
+          <button class="sci-key function" data-sci="atan">tan⁻¹</button>
+          <button class="sci-key function" data-sci="log">log</button>
+          <button class="sci-key function" data-sci="ln">ln</button>
+
+          <button class="sci-key function" data-sci="square">x²</button>
+          <button class="sci-key function" data-sci="cube">x³</button>
+          <button class="sci-key function" data-sci="power">xʸ</button>
+          <button class="sci-key function" data-sci="sqrt">√x</button>
+          <button class="sci-key function" data-sci="cbrt">∛x</button>
+
+          <button class="sci-key function" data-sci="root">ʸ√x</button>
+          <button class="sci-key function" data-sci="inverse">1/x</button>
+          <button class="sci-key function" data-sci="abs">|x|</button>
+          <button class="sci-key function" data-sci="factorial">n!</button>
+          <button class="sci-key function" data-sci="exp">EXP</button>
+
+          <button class="sci-key function" data-sci="pow10">10ˣ</button>
+          <button class="sci-key function" data-sci="powe">eˣ</button>
+          <button class="sci-key function" data-sci="Ans">Ans</button>
+          <button class="sci-key function" data-sci="(">(</button>
+          <button class="sci-key function" data-sci=")">)</button>
+
+          <button class="sci-key clear" data-sci="AC">AC</button>
+          <button class="sci-key function" data-sci="DEL">DEL</button>
+          <button class="sci-key function" data-sci="%">%</button>
+          <button class="sci-key operator" data-sci="÷">÷</button>
+          <button class="sci-key" data-sci="7">7</button>
+
+          <button class="sci-key" data-sci="8">8</button>
+          <button class="sci-key" data-sci="9">9</button>
+          <button class="sci-key operator" data-sci="×">×</button>
+          <button class="sci-key" data-sci="4">4</button>
+          <button class="sci-key" data-sci="5">5</button>
+
+          <button class="sci-key" data-sci="6">6</button>
+          <button class="sci-key operator" data-sci="−">−</button>
+          <button class="sci-key" data-sci="1">1</button>
+          <button class="sci-key" data-sci="2">2</button>
+          <button class="sci-key" data-sci="3">3</button>
+
+          <button class="sci-key operator" data-sci="+">+</button>
+          <button class="sci-key function" data-sci="±">±</button>
+          <button class="sci-key" data-sci="0">0</button>
+          <button class="sci-key" data-sci=".">.</button>
+          <button class="sci-key equals" data-sci="=">=</button>
+
+        </div>
+
+        <button class="secondary-button mode-switch"
+                data-page="calculadora">
+          🩷 Volver a calculadora normal
+        </button>
+
+      </div>
+
+      <p class="footer-note">
+        JR² Calculadora Científica
+      </p>
+
+    </section>
+
+    <!-- =====================================
+         HISTORIAL
+    ====================================== -->
+
+    <section id="historial" class="page">
+
+      <div class="section-heading">
+        <div>
+          <h2>🕒 Historial</h2>
+          <p>Consulta tus operaciones anteriores.</p>
+        </div>
+
+        <button id="clearHistory"
+                class="small-button danger">Borrar</button>
+      </div>
+
+      <div id="historyList" class="records"></div>
+
+    </section>
+
+    <!-- =====================================
+         FAVORITOS
+    ====================================== -->
+
+    <section id="favoritos" class="page">
+
+      <div class="section-heading">
+        <div>
+          <h2>⭐ Favoritos</h2>
+          <p>Tus operaciones importantes.</p>
+        </div>
+
+        <button id="clearFavorites"
+                class="small-button danger">Borrar</button>
+      </div>
+
+      <div id="favoritesList" class="records"></div>
+
+    </section>
+
+    <!-- =====================================
+         CONVERSOR DE UNIDADES
+    ====================================== -->
+
+    <section id="conversor" class="page">
+
+      <h2>📏 Conversor de unidades</h2>
+
+      <p class="section-description">
+        Convierte medidas fácilmente.
+      </p>
+
+      <div class="card">
+
+        <label for="category">Categoría</label>
+        <select id="category"></select>
+
+        <label for="convertAmount">Cantidad</label>
+        <input id="convertAmount"
+               type="text"
+               inputmode="decimal"
+               value="1">
+
+        <label for="fromUnit">Convertir de</label>
+        <select id="fromUnit"></select>
+
+        <button id="swapUnits"
+                class="secondary-button">
+          ⇅ Intercambiar unidades
+        </button>
+
+        <label for="toUnit">Convertir a</label>
+        <select id="toUnit"></select>
+
+      </div>
+
+      <div class="card result-card">
+        <span>Resultado de la conversión</span>
+        <strong id="conversionResult">0</strong>
+        <small id="conversionUnit"></small>
+      </div>
+
+    </section>
+
+    <!-- =====================================
+         CONVERSOR DE MONEDAS
+    ====================================== -->
+
+    <section id="monedas" class="page">
+
+      <h2>💱 Conversor de monedas</h2>
+
+      <p class="section-description">
+        Convierte monedas utilizando tipos de cambio actualizados.
+      </p>
+
+      <div class="card">
+
+        <label for="currencyAmount">Cantidad</label>
+        <input id="currencyAmount"
+               type="number"
+               min="0"
+               step="any"
+               value="1"
+               inputmode="decimal"
+               placeholder="Introduce una cantidad">
+
+        <label for="currencyFrom">Convertir de</label>
+        <select id="currencyFrom">
+          <option value="MXN">Peso mexicano (MXN)</option>
+          <option value="USD">Dólar estadounidense (USD)</option>
+          <option value="EUR">Euro (EUR)</option>
+          <option value="COP">Peso colombiano (COP)</option>
+          <option value="HNL">Lempira hondureño (HNL)</option>
+          <option value="PEN">Sol peruano (PEN)</option>
+        </select>
+
+        <button id="swapCurrencies"
+                class="secondary-button">
+          ⇅ Intercambiar monedas
+        </button>
+
+        <label for="currencyTo">Convertir a</label>
+        <select id="currencyTo">
+          <option value="MXN">Peso mexicano (MXN)</option>
+          <option value="USD" selected>Dólar estadounidense (USD)</option>
+          <option value="EUR">Euro (EUR)</option>
+          <option value="COP">Peso colombiano (COP)</option>
+          <option value="HNL">Lempira hondureño (HNL)</option>
+          <option value="PEN">Sol peruano (PEN)</option>
+        </select>
+
+        <button id="convertCurrency"
+                class="secondary-button">
+          💱 Convertir
+        </button>
+
+      </div>
+
+      <div class="card result-card">
+
+        <span>Resultado de la conversión</span>
+
+        <strong id="currencyResult">0.00</strong>
+
+        <small id="currencyRate">
+          Esperando conversión...
+        </small>
+
+        <small id="currencyUpdated"></small>
+
+      </div>
+
+      <div class="card">
+        <p>
+          Los tipos de cambio se consultan mediante un servicio externo.
+          Se necesita conexión a internet para actualizar las conversiones.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- =====================================
+         CALCULADORA DE PORCENTAJES
+    ====================================== -->
+
+    <section id="porcentajes" class="page">
+
+      <h2>📊 Calculadora de porcentajes</h2>
+
+      <p class="section-description">
+        Calcula descuentos, aumentos y porcentajes.
+      </p>
+
+      <div class="card">
+
+        <label for="percentAmount">Cantidad principal</label>
+        <input id="percentAmount"
+               type="text"
+               inputmode="decimal"
+               value="720">
+
+        <label for="percentRate">Porcentaje (%)</label>
+        <input id="percentRate"
+               type="text"
+               inputmode="decimal"
+               value="15">
+
+      </div>
+
+      <div class="card result-card">
+        <span>Porcentaje calculado</span>
+        <strong id="percentResult">0</strong>
+      </div>
+
+      <div class="card result-card">
+        <span>Cantidad más porcentaje</span>
+        <strong id="percentIncrease">0</strong>
+      </div>
+
+      <div class="card result-card">
+        <span>Cantidad menos porcentaje</span>
+        <strong id="percentDecrease">0</strong>
+      </div>
+
+    </section>
+
+    <!-- =====================================
+         TEMAS PERSONALIZADOS
+    ====================================== -->
+
+    <section id="temas" class="page">
+
+      <h2>🎨 Temas personalizados</h2>
+
+      <p class="section-description">
+        Elige una temática para transformar la apariencia
+        de tu calculadora.
+      </p>
+
+      <div class="theme-grid">
+
+        <button class="theme-card pokemon"
+                data-theme-select="pokemon">
+
+          <span>⚡</span>
+          <strong>Pokémon</strong>
+          <small>Aventura y criaturas</small>
+
+        </button>
+
+        <button class="theme-card galaxias"
+                data-theme-select="galaxias">
+
+          <span>🌌</span>
+          <strong>Espacio y galaxias</strong>
+          <small>Universo y estrellas</small>
+
+        </button>
+
+        <button class="theme-card kawaii"
+                data-theme-select="kawaii">
+
+          <span>💜</span>
+          <strong>Kawaii morado</strong>
+          <small>Estilo cute y mágico</small>
+
+        </button>
+
+      </div>
+
+      <div class="card">
+        <h3>Personalización JR²</h3>
+        <p>
+          Cada tema tendrá su propio fondo ilustrado,
+          colores, botones y detalles visuales.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- =====================================
+         AJUSTES
+    ====================================== -->
+
+    <section id="ajustes" class="page">
+
+      <h2>⚙️ Ajustes</h2>
+
+      <div class="card">
+
+        <h3>JR² Calculadora 3.0</h3>
+
+        <p>Versión 3.0</p>
+        <p>Calculadora normal y científica</p>
+        <p>Conversor de unidades</p>
+        <p>Conversor de monedas</p>
+        <p>Funcionamiento sin internet para las funciones locales</p>
+        <p>Almacenamiento local</p>
+
+        <p>
+          Tema actual:
+          <strong id="currentTheme">Pokémon</strong>
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Mis datos</h3>
+
+        <p>
+          Operaciones guardadas:
+          <strong id="historyCount">0</strong>
+        </p>
+
+        <p>
+          Favoritos:
+          <strong id="favoritesCount">0</strong>
+        </p>
+
+        <button id="exportData"
+                class="secondary-button">
+          📥 Exportar respaldo
+        </button>
+
+        <label for="importData"
+               class="secondary-button import-label">
+          📤 Importar respaldo
+        </label>
+
+        <input type="file"
+               id="importData"
+               accept=".json,application/json"
+               hidden>
+
+        <button id="resetData"
+                class="secondary-button danger">
+          🗑 Eliminar mis datos
+        </button>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Acerca de</h3>
+
+        <p>
+          JR² Calculadora es una herramienta para realizar
+          operaciones cotidianas y cálculos científicos.
+        </p>
+
+        <p>
+          Tus datos se guardan en este dispositivo.
+          No necesitas crear una cuenta.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- NOTIFICACIONES -->
+  <div id="toast"
+       class="toast"
+       role="status"
+       aria-live="polite"></div>
+
+</body>
+</html>

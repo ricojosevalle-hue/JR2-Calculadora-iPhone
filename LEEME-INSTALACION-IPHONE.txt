@@ -1,0 +1,25 @@
+# JR² Calculadora 3.0 — paquete instalable en iPhone
+
+Este paquete conserva la versión web principal de JR² Calculadora 3.0 y agrega soporte PWA para instalarla desde Safari en iPhone.
+
+## Qué incluye
+- Los archivos originales `index.html`, `style.css` y `script.js`.
+- Los fondos de los temas Pokémon, Galaxias y Kawaii.
+- `manifest.webmanifest` con el nombre, icono y modo independiente.
+- Iconos PWA de 192 y 512 px y `apple-touch-icon.png` de 180 px.
+- `service-worker.js` para guardar la interfaz y los fondos en caché.
+- Ajustes de áreas seguras para iPhone.
+
+## Cómo instalar en iPhone
+1. Publica TODO el contenido de esta carpeta en un hosting HTTPS (por ejemplo, GitHub Pages).
+2. Abre la dirección HTTPS en Safari en el iPhone.
+3. Pulsa Compartir.
+4. Selecciona “Añadir a pantalla de inicio”.
+5. Confirma “Añadir”. La calculadora aparecerá como una app en la pantalla de inicio.
+
+## Límites importantes
+- Esta es una PWA, no un archivo IPA ni una app nativa de App Store.
+- La primera carga y la instalación requieren conexión a internet.
+- Las operaciones, historial y favoritos usan almacenamiento local del navegador instalado.
+- El conversor de monedas consulta un servicio externo y necesita internet para obtener tasas nuevas; la interfaz y funciones locales quedan disponibles tras cargar y almacenar la app.
+- No se modificó ni se reemplazó la carpeta Android/Expo original del ZIP de respaldo.
